@@ -10,7 +10,7 @@ var current_time = 0.0
 var days = 90
 
 func _ready():
-	player.connect("score_change", self, "update_score")
+	player.connect("score_changed", self, "update_score")
 	time.set_text(time_text.format({"amount":days}))
 	score.set_text(score_text.format({"amount":initial_score}))
 
