@@ -1,7 +1,115 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://screens/abstract_screen.tscn" type="PackedScene" id=1]
+[ext_resource path="res://screens/credits/credits_screen.gd" type="Script" id=2]
+
+[sub_resource type="Animation" id=1]
+
+resource_name = "credits"
+length = 5.0
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Credits:percent_visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/keys = {
+"times": PoolRealArray( 0, 5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
 
 [node name="CreditsScreen" instance=ExtResource( 1 )]
+
+script = ExtResource( 2 )
+next_scene = "res://screens/main/main_screen.tscn"
+
+[node name="Credits" type="Label" parent="."]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 225.0
+margin_top = 137.0
+margin_right = 751.0
+margin_bottom = 445.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "graphics: made with inkscape by Henrique Campos (aka Pigdev)
+
+music and sound effects: made with LMMS by Henrique Campos (aka Pigdev)
+
+game design and development: made with Godot Engine by Henrique Campos (aka Pigdev)
+
+font garoa hacker clube : Tony de Marco & Diego Maldonado"
+autowrap = true
+percent_visible = 0.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Back" type="Button" parent="."]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 433.0
+margin_top = 435.0
+margin_right = 556.0
+margin_bottom = 471.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Back"
+flat = false
+
+[node name="ItchButton" type="Button" parent="."]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 818.0
+margin_top = 275.0
+margin_right = 938.0
+margin_bottom = 386.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Pigdev's itch"
+flat = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+root_node = NodePath("..")
+anims/credits = SubResource( 1 )
+playback/active = true
+playback/speed = 1.0
+blend_times = [  ]
+autoplay = ""
+
+[connection signal="button_up" from="Back" to="." method="_on_back_button"]
+
+[connection signal="button_up" from="ItchButton" to="." method="_on_itch_button"]
 
 

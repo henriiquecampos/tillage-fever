@@ -15,4 +15,4 @@ func check_supply_demand():
 	spread = (spread * 100)/max_value
 	var dif = (abs(spread - (value*100/max_value)))
 	if dif >= 30:
-		print("game_over")
+		get_parent().change_scene("res://screens/lose/lose_screen.tscn")

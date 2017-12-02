@@ -10,7 +10,7 @@ var current_time = 0.0
 var days = 90
 
 func _ready():
-	player.connect("score_change", self, "update_score")
+	player.connect("score_changed", self, "update_score")
 	time.set_text(time_text.format({"amount":days}))
 	score.set_text(score_text.format({"amount":initial_score}))
 
@@ -24,12 +24,14 @@ func _process(delta):
 
 func update_score(value):
 	if value < 0:
-		print("player lose")
+		next_scene = "res://screens/lose/lose_screen.tscn"
+		change_scene()
 	score.set_text(score_text.format({"amount":value}))
 	
 func update_days(value):
 	if value < 0:
-		print("player win!!")
+		next_scene = "res://screens/win/win_screen.tscn"
+		change_scene()
 	time.set_text(time_text.format({"amount":value}))
 	if value%5 == 0:
 		$Gauge.check_supply_demand()
