@@ -23,8 +23,12 @@ func _process(delta):
 			current_time = 0.0
 
 func update_score(value):
+	if value <= 0:
+		print("player lose")
 	score.set_text(score_text.format({"amount":value}))
 	
 
 func update_days(value):
+	if value <= 0:
+		print("player win!!")
 	time.set_text(time_text.format({"amount":value}))
