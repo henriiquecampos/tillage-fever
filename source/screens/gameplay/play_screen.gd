@@ -27,12 +27,11 @@ func update_score(value):
 		print("player lose")
 	score.set_text(score_text.format({"amount":value}))
 	
-
 func update_days(value):
-	if value <= 0:
+	if value < 0:
 		print("player win!!")
 	time.set_text(time_text.format({"amount":value}))
-	print(value%5)
 	if value%5 == 0:
-		$Field/Tilemap.current_tile += 1
+		$Gauge.check_supply_demand()
 		$Field/Tilemap.changed_tiles(value)
+		player.set_demand(int(rand_range(player.demand/2, player.demand * 2)))
