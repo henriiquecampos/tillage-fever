@@ -13,3 +13,6 @@ func set_sfx_volume(volume):
 	
 func set_bgm_volume(volume):
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("BGM"), volume)
+
+func _on_back():
+	change_scene()
