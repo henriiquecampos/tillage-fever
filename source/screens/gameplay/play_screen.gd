@@ -17,13 +17,13 @@ func _ready():
 func _process(delta):
 	if days >= 0:
 		current_time += delta
-		if current_time >= 5.0:
+		if current_time >= 1.0:
 			days -= 1
 			update_days(days)
 			current_time = 0.0
 
 func update_score(value):
-	if value <= 0:
+	if value < 0:
 		print("player lose")
 	score.set_text(score_text.format({"amount":value}))
 	
@@ -32,3 +32,7 @@ func update_days(value):
 	if value <= 0:
 		print("player win!!")
 	time.set_text(time_text.format({"amount":value}))
+	print(value%5)
+	if value%5 == 0:
+		$Field/Tilemap.current_tile += 1
+		$Field/Tilemap.changed_tiles(value)

@@ -1,6 +1,7 @@
 extends TileMap
 
 var last_cell = Vector2(15,15)
+var current_tile = 1
 func _process(delta):
 	if Input.is_action_pressed("click"):
 		var current_cell = world_to_map(get_local_mouse_position())
@@ -18,3 +19,10 @@ func set_new_tile(cell):
 		else:
 			set_cellv(cell, 0)
 			player.set_current_score(int(player.current_score + (player.tile_price/2)))
+			
+func changed_tiles(days):
+	#change the tiles according to the current amount of days
+	for c in get_used_cells():
+		print(get_cellv(c))
+		if get_cellv(c) >=1:
+			set_cellv(c, get_cellv(c) + 1)
