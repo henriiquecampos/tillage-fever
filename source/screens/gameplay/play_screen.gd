@@ -10,6 +10,7 @@ var current_time = 0.0
 var days = 90
 
 func _ready():
+	randomize()
 	player.connect("score_changed", self, "update_score")
 	time.set_text(time_text.format({"amount":days}))
 	score.set_text(score_text.format({"amount":initial_score}))
@@ -27,7 +28,7 @@ func update_score(value):
 	score.set_text(score_text.format({"amount":value}))
 	
 func update_days(value):
-	if value < 0:
+	if value <= 0:
 		next_scene = "res://screens/win/win_screen.tscn"
 		change_scene()
 	time.set_text(time_text.format({"amount":value}))
@@ -35,7 +36,14 @@ func update_days(value):
 		if player.current_score <= 0:
 			next_scene = "res://screens/lose/lose_screen.gd"
 			change_scene()
+			return
 		$Gauge.check_supply_demand()
 		$Field/Tilemap.changed_tiles(value)
-		if player.demand <= 10000:
-			player.set_demand(int(rand_range(player.demand/2, player.demand * 2)))
+		update_player_demand()
+
+func update_player_demand():
+	var new_demand = int(rand_range(player.demand/2, player.demand * 2))
+	if player.demand + new_demand <= 10000:
+		player.demand = new_demand
+	else:
+		update_player_demand()
