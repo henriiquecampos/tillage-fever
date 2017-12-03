@@ -13,6 +13,7 @@ func _ready():
 	player.connect("score_changed", self, "update_score")
 	time.set_text(time_text.format({"amount":days}))
 	score.set_text(score_text.format({"amount":initial_score}))
+	accorn_rain.hide()
 
 func _process(delta):
 	if days >= 0:
