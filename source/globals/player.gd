@@ -1,11 +1,11 @@
 extends Node
-const DEFAULT_SCORE = 2000
+const DEFAULT_SCORE = 5000
 const DEFAULT_PRICE = 200
 const DEFAULT_SUPPLY = 0
 const DEFAULT_DEMAND = 100
 
-export (int) var current_score = DEFAULT_SCORE setget set_current_score
-export (int) var tile_price = DEFAULT_PRICE setget set_tile_price
+var current_score = DEFAULT_SCORE setget set_current_score
+var tile_price = DEFAULT_PRICE setget set_tile_price
 var supply = DEFAULT_SUPPLY setget set_supply
 var demand = DEFAULT_DEMAND setget set_demand
 
