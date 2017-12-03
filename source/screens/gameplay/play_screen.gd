@@ -23,9 +23,6 @@ func _process(delta):
 			current_time = 0.0
 
 func update_score(value):
-	if value < 0:
-		next_scene = "res://screens/lose/lose_screen.tscn"
-		change_scene()
 	score.set_text(score_text.format({"amount":value}))
 	
 func update_days(value):
@@ -34,6 +31,9 @@ func update_days(value):
 		change_scene()
 	time.set_text(time_text.format({"amount":value}))
 	if value%5 == 0:
+		if player.current_score <= 0:
+			next_scene = "res://screens/lose/lose_screen.gd"
+			change_scene()
 		$Gauge.check_supply_demand()
 		$Field/Tilemap.changed_tiles(value)
 		player.set_demand(int(rand_range(player.demand/2, player.demand * 2)))
