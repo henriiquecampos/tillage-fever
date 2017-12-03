@@ -37,4 +37,5 @@ func update_days(value):
 			change_scene()
 		$Gauge.check_supply_demand()
 		$Field/Tilemap.changed_tiles(value)
-		player.set_demand(int(rand_range(player.demand/2, player.demand * 2)))
+		if player.demand <= 10000:
+			player.set_demand(int(rand_range(player.demand/2, player.demand * 2)))
