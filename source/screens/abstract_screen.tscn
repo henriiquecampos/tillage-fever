@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://screens/abstract_screen.gd" type="Script" id=1]
+[ext_resource path="res://screens/screen_theme.tres" type="Theme" id=1]
+[ext_resource path="res://screens/abstract_screen.gd" type="Script" id=2]
 
 [node name="AbstractScreen" type="Control"]
 
@@ -13,7 +14,8 @@ rect_clip_content = false
 mouse_filter = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-script = ExtResource( 1 )
+theme = ExtResource( 1 )
+script = ExtResource( 2 )
 next_scene = null
 
 
