@@ -8,7 +8,7 @@ func _ready():
 func _process(delta):
 	if Input.is_action_pressed("click"):
 		var current_cell = world_to_map(get_local_mouse_position())
-		if (current_cell.x <= 9) and (current_cell.y <= 5):
+		if (current_cell.x <= 9 and current_cell.x >= 0) and (current_cell.y <= 5 and current_cell.y >= 0):
 			set_new_tile(current_cell)
 		last_cell = current_cell
 	elif Input.is_action_just_released("click"):
