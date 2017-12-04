@@ -24,6 +24,7 @@ tracks/0/keys = {
 [node name="WinScreen" instance=ExtResource( 1 )]
 
 script = ExtResource( 2 )
+next_scene = "res://screens/main/main_screen.tscn"
 
 [node name="Label" type="Label" parent="."]
 

@@ -1,0 +1,60 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="GDScript" id=1]
+
+script/source = "extends Label
+enum types {BUY,SELL}
+export var type = BUY
+var amount
+func _ready():
+	var description = \"- ${amount},00\"
+	var direction = Vector2()
+	if type == BUY:
+		direction = Vector2(-50, 50)
+		set_text(description.format({\"amount\":int(amount)}))
+		set(\"custom_colors/font_color\", Color(\"c24642\"))
+	elif type == SELL:
+		direction = Vector2(50, -50)
+		description = \"+ ${amount},00\"
+		set_text(description.format({\"amount\":int(amount)}))
+		set(\"custom_colors/font_color\", Color(\"7e8247\"))
+	var t = $Tween
+	t.interpolate_property(self, \"rect_position\", get_position(), get_position() + direction,
+	1.0, t.TRANS_LINEAR, t.EASE_IN)
+	t.start()
+	yield(t, \"tween_completed\")
+	queue_free()"
+
+[node name="BuySell" type="Label"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 459.0
+margin_top = 333.0
+margin_right = 555.0
+margin_bottom = 360.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "- ${amount},00"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+script = SubResource( 1 )
+type = 0
+
+[node name="Tween" type="Tween" parent="."]
+
+playback_process_mode = 1
+playback/active = false
+playback/repeat = false
+playback/speed = 1.0
+
+
