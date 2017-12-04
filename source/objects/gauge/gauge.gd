@@ -11,12 +11,14 @@ func update_demand(demand):
 	t.interpolate_method(self, "set_max", get_max(), demand, 0.5,
 	t.TRANS_ELASTIC, t.EASE_OUT)
 	t.start()
-	
+
 func update_supply(supply):
 	var t = $Tween
 	t.interpolate_method(self, "set_value", get_value(), supply, 0.5,
 	t.TRANS_ELASTIC, t.EASE_OUT)
 	t.start()
+	sfx_player.set_stream(sfx_player.sup_dem)
+	sfx_player.play()
 
 func check_supply_demand():
 	var spread = max_value - value

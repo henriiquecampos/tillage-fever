@@ -19,6 +19,7 @@ config/icon="res://icon.png"
 player="*res://globals/player.tscn"
 bgm_player="*res://globals/bgm_player.tscn"
 accorn_rain="*res://globals/accorn_rain.tscn"
+sfx_player="*res://globals/sfx_player.tscn"
 
 [gdnative]
 

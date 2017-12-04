@@ -18,12 +18,4 @@ theme = ExtResource( 1 )
 script = ExtResource( 2 )
 next_scene = null
 
-[node name="SFX" type="AudioStreamPlayer" parent="."]
-
-stream = null
-volume_db = 0.0
-autoplay = false
-mix_target = 0
-bus = "Master"
-
 

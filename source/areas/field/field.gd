@@ -26,6 +26,8 @@ func set_new_tile(cell):
 			player.set_current_score(int(player.current_score + (player.tile_price/2)))
 			player.set_supply(player.supply - 10)
 			add_feedback(1, cell, player.tile_price/2)
+			sfx_player.set_stream(sfx_player.deny)
+			sfx_player.play()
 
 			
 func changed_tiles(days):
@@ -34,12 +36,16 @@ func changed_tiles(days):
 			set_cellv(c, 0)
 			player.set_supply(player.supply - 10)
 			player.set_current_score(player.current_score + (player.tile_price * 2))
-			add_feedback(1, c, player.tile_price)
-			
+			add_feedback(1, c, player.tile_price * 2)
+			$SFX.set_stream(sfx_player.selling)
+			$SFX.play()
 		elif get_cellv(c) >=1:
 			player.set_current_score(player.current_score + (player.tile_price / 5))
 			add_feedback(1, c, player.tile_price / 5)
 			set_cellv(c, get_cellv(c) + 1)
+			sfx_player.set_stream(sfx_player.harvest)
+		sfx_player.play()
+
 			
 func add_feedback(type, where, amount):
 	var f = feedback.instance()

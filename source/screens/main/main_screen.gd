@@ -3,7 +3,9 @@ extends "res://screens/abstract_screen.gd"
 func _ready():
 	for c in $Buttons.get_children():
 		c.connect("button_up", self, "change_scene",[next_scene, c])
-		
+		c.connect("button_down", self, "_on_button_down")
+
+
 func change_scene(scene = next_scene, which = null):
 	if which.get_index() == 0:
 		next_scene = "res://screens/gameplay/play_screen.tscn"

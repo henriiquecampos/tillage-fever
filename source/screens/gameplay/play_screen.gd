@@ -39,6 +39,8 @@ func update_days(value):
 			return
 		$Gauge.check_supply_demand()
 		$Field/Tilemap.changed_tiles(value)
+		sfx_player.set_stream(sfx_player.harvest)
+		sfx_player.play()
 		update_player_demand()
 
 func update_player_demand():
