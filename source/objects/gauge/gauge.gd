@@ -1,4 +1,5 @@
 extends TextureProgress
+const FEEDBACK = preload("res://objects/gauge/price_feedback.tscn")
 
 func _ready():
 	player.connect("demand_changed", self, "update_demand")
@@ -26,11 +27,20 @@ func update_supply(supply):
 func check_supply_demand():
 	if calc_spread() < 30 or calc_spread() > 70:
 		get_parent().change_scene("res://screens/lose/lose_screen.tscn")
-	if player.supply > player.demand:
+		return
+	var l = FEEDBACK.instance()
+	l.set("custom_colors/font_color", Color("c95854"))
+	if calc_spread() < 50:
+		l.set_text("price decreased")
 		player.tile_price -= 25
-	elif player.supply < player.demand:
+		l.amount = Vector2(0, 25)
+	else:
+		l.set_text("price increased")
 		player.tile_price += 25
-		
+		l.amount = Vector2(0, -25)
+	l.set_position($Reference.get_position())
+	add_child(l)
+
 func check_warning():
 	if calc_spread() < 30 or calc_spread() > 70:
 		$Warning.show()
@@ -42,5 +52,4 @@ func check_warning():
 func calc_spread():
 	var dif = abs(player.demand - player.supply)
 	var spread = (dif * 100)/player.demand
-	print(spread)
 	return(spread)

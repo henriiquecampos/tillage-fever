@@ -1,6 +1,14 @@
 extends "res://screens/abstract_screen.gd"
-
+export (String, MULTILINE) var bubble = ""
+export (String, MULTILINE) var broke = ""
 func _ready():
+	var reason = ""
+	if player.supply > player.demand:
+		reason = bubble
+	else:
+		reason = broke
+	
+	$Reason.set_text(reason)
 	sfx_player.set_stream(sfx_player.lose)
 	sfx_player.play()
 	for b in $Buttons.get_children():
