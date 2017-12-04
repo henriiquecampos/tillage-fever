@@ -133,6 +133,7 @@ playback/speed = 2.0
 blend_times = [  ]
 autoplay = "reason"
 
+
 [node name="Buttons" type="VBoxContainer" parent="."]
 
 anchor_left = 0.0

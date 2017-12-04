@@ -1,4 +1,5 @@
 extends "res://screens/abstract_screen.gd"
+
 export (String, MULTILINE) var bubble = ""
 export (String, MULTILINE) var broke = ""
 func _ready():
