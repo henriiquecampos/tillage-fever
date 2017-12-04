@@ -4,6 +4,7 @@ export (String, MULTILINE) var bubble = ""
 export (String, MULTILINE) var broke = ""
 func _ready():
 	var reason = ""
+
 	if player.current < 50:
 		reason = bubble
 		$RIP.set_text("bubble popper")

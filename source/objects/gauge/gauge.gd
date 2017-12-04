@@ -35,12 +35,15 @@ func check_supply_demand():
 		l.set_text("price decreased")
 		player.tile_price -= 25
 		l.amount = Vector2(0, 25)
+
 		l.set_position($Supply.get_position() + Vector2(0, -25))
+
 	else:
 		l.set_text("price increased")
 		player.tile_price += 25
 		l.amount = Vector2(0, -25)
 		l.set_position($Demand.get_position() + Vector2(0, 25))
+    
 	add_child(l)
 
 func check_warning():
