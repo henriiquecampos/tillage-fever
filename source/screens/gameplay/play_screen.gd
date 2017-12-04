@@ -45,7 +45,7 @@ func update_days(value):
 
 func update_player_demand():
 	var new_demand = int(rand_range(player.demand/2, player.demand * 2))
-	if (player.demand + new_demand) <= 8000:
+	if (player.demand + new_demand) <= 1080 and new_demand >= 40:
 		player.demand = new_demand
 	else:
 		update_player_demand()
