@@ -8,6 +8,7 @@ var current_score = DEFAULT_SCORE setget set_current_score
 var tile_price = DEFAULT_PRICE setget set_tile_price
 var supply = DEFAULT_SUPPLY setget set_supply
 var demand = DEFAULT_DEMAND setget set_demand
+var current = 100
 
 signal score_changed(value)
 signal supply_changed(value)

@@ -106,10 +106,10 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 307.0
-margin_top = 223.0
-margin_right = 748.0
-margin_bottom = 332.0
+margin_left = 283.0
+margin_top = 230.0
+margin_right = 724.0
+margin_bottom = 339.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
@@ -118,6 +118,7 @@ size_flags_vertical = 4
 custom_colors/font_color = Color( 1, 0.81543, 0.493896, 1 )
 text = "you lose"
 valign = 1
+autowrap = true
 percent_visible = 0.0
 lines_skipped = 0
 max_lines_visible = -1
@@ -132,7 +133,6 @@ playback/active = true
 playback/speed = 2.0
 blend_times = [  ]
 autoplay = "reason"
-
 
 [node name="Buttons" type="VBoxContainer" parent="."]
 

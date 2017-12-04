@@ -25,6 +25,7 @@ func update_supply(supply):
 	check_warning()
 
 func check_supply_demand():
+	player.current = calc_spread()
 	if calc_spread() < 30 or calc_spread() > 70:
 		get_parent().change_scene("res://screens/lose/lose_screen.tscn")
 		return
@@ -34,11 +35,12 @@ func check_supply_demand():
 		l.set_text("price decreased")
 		player.tile_price -= 25
 		l.amount = Vector2(0, 25)
+		l.set_position($Supply.get_position() + Vector2(0, -25))
 	else:
 		l.set_text("price increased")
 		player.tile_price += 25
 		l.amount = Vector2(0, -25)
-	l.set_position($Reference.get_position())
+		l.set_position($Demand.get_position() + Vector2(0, 25))
 	add_child(l)
 
 func check_warning():
